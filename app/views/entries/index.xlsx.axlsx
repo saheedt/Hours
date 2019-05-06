@@ -1,0 +1,11 @@
+workbook = xlsx_package.workbook
+xlsx_data = @format_xlsx.format_xlsx(@user)
+
+
+workbook.add_worksheet(name: "#{@user.full_name}-#{DateTime.now.strftime("%m-%d-%Y-%H%M").to_s}") do |sheet|
+    sheet.add_row xlsx_data.first.keys
+
+    xlsx_data.each do |data|
+        sheet.add_row [data[:User], data[:Project], data[:Hours], data[:Billable], data[:Billed], data[:Description], data[:Date], data[:Category]]
+    end
+end

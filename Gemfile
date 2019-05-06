@@ -42,6 +42,10 @@ gem "redcarpet"
 gem "holidays"
 gem "sprockets-rails", "~>3.0"
 gem "brakeman"
+gem 'rubyzip', '= 1.0.0'
+gem 'axlsx', '= 2.0.1'
+gem 'axlsx_rails'
+
 
 source "https://rails-assets.org" do
   gem "rails-assets-chartjs"

@@ -1,9 +1,11 @@
 class EntriesController < ApplicationController
   include CSVDownload
+  include XLSXDownload
 
   DATE_FORMAT = "%d/%m/%Y".freeze
 
   def index
+    @format_xlsx = XlsxDownload.new
     @user = User.find_by_slug(params[:user_id])
     @hours_entries = @user.hours.by_date.page(params[:hours_pages]).per(20)
     @mileages_entries = @user.mileages.by_date.page(
@@ -17,6 +19,7 @@ class EntriesController < ApplicationController
           hours_entries: @user.hours.by_date,
           mileages_entries: @user.mileages.by_date)
       end
+      format.xlsx
     end
   end
 

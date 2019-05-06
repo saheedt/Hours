@@ -4,6 +4,8 @@
     - localized_cache @user do
       = render "/header", title: t('entries.index.user_entries', user: @user.first_name)
       = link_to t("entries.download_csv"), user_entries_path(@user, format: "csv")
+      |
+      = link_to "Download all entries as SpreadSheet", user_entries_path(@user, format: "xlsx")
     .entries-tabs-container
       %ul.accordion-tabs
         %li.tab-header-and-content-left
